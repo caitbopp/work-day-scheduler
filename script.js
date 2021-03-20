@@ -8,11 +8,11 @@ $(document).ready(function () {
         console.log(this);
         var value = $(this).siblings('.description').val();
         var time = $(this).parent().attr('id');
-
+        // Save to local storage
         localStorage.setItem(value, time);
     });
 
-    // How to save local storage info on table?
+    // How to pull from local storage and keep info on table?
 
     // Adding classes to hour blocks based on current hour 
     function timeTracker() {
