@@ -1,17 +1,37 @@
-$(document).ready(function (){
+$(document).ready(function () {
 
+    // Added current day of week and date
+    var todaysDate = moment().format("dddd, MMMM Do");
+    $("#currentDay").text(todaysDate);
     // Add button click
-    $('.saveBtn').on('click', function(){
+    $(".saveBtn").on('click', function () {
+        console.log(this);
         var value = $(this).siblings('.description').val();
-        var time = $(this).parent.attr('id');
-    
-        // set your item to local storage
-    })
-    
-    // Function for bringing in moment and appending to page (date at top of page?)
-    
-    // Set the classes of the elements based on the time using conditional statement - use setAttribute and set styling attribute by comparing stuff
-        // ex: if moment is past of listed col, --> each (in jquery) ex each of these if time < current time then set css class/attribute
-        
-    
-    })
+        var time = $(this).parent().attr('id');
+
+        localStorage.setItem(value, time);
+    });
+
+    // How to save local storage info on table?
+
+    // Adding classes to hour blocks based on current hour 
+    function timeTracker() {
+        var currentHour = moment().hour();
+
+        $(".time-block").each(function () {
+            var blockHour = parseInt($(this).attr("id").split("hour")[1]);
+            console.log(blockHour, currentHour)
+
+            if (blockHour < currentHour) {
+                $(this).addClass("past");
+            }
+            else if (blockHour === currentHour) {
+                $(this).addClass("present");
+            }
+            else {
+                $(this).addClass("future");
+            }
+        })
+    }
+    timeTracker();
+});
