@@ -5,7 +5,6 @@ $(document).ready(function () {
     $("#currentDay").text(todaysDate);
     // Add button click
     $(".saveBtn").on('click', function () {
-        //console.log(this);
         var value = $(this).siblings('.description').val();
         var time = $(this).parent().attr('id');
         // Save to local storage
@@ -24,7 +23,6 @@ $(document).ready(function () {
 
         $(".time-block").each(function () {
             var blockHour = parseInt($(this).attr("id").split("hour-")[1]);
-            //console.log(blockHour, currentHour)
 
             if (blockHour < currentHour) {
                 $(this).addClass("past");
